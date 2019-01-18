@@ -32,12 +32,35 @@
 			</div>
 		</div>
 	</nav>
+	
 	<div class="container">
-		<div class="alert alert-primary" role="alert">
-			Thanks for checking out my Java Spring demo.  You can check out the 
-			source code <a href="#" class="alert-link">here</a> or sign up <a href="#" class="alert-link">here</a>
+		<div class="row justify-content-md-center">
+			<div class="col-md-6 ">
+			<h1>Register</h1>
+			<form method="POST" th:object="${user}">
+				<div class="form-group">
+					<label for="email">Email</label>
+					<input type="email" class="form-control" th:field="*{email}">
+				</div>
+				<div class="form-group">
+					<label for="firstName">First Name</label>
+					<input type="text" class="form-control" th:field="*{firstName}">
+				</div>
+				<div class="form-group">
+					<label for="password">Password</label>
+					<input type="password" class="form-control" th:field="*{password}">
+				</div>
+				<div class="form-group">
+					<label for="confirmPassword">Confirm Password</label>
+					<input type="password" class="form-control" th:field="*{confirmPassword}">
+				</div>
+				<div class="row justify-content-end px-3">
+				<button type="submit" class="btn btn-primary">Register</button>
+				<div class="form-group">
+			</form>
+			</div>
 		</div>
+	
 	</div>
-
+	
 </body>
-</html>
