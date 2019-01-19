@@ -1,7 +1,7 @@
 package spritter.data;
 
 import org.springframework.data.repository.CrudRepository;
-import data.User;
+import spritter.data.User;
 
 public interface UserRepository extends CrudRepository<User, Long> {
 	
