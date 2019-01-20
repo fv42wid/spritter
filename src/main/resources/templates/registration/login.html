@@ -36,48 +36,28 @@
 	<div class="container">
 		<div class="row justify-content-md-center">
 			<div class="col-md-6 ">
-			<h1>Register</h1>
+			<h1>Login</h1>
 			
-			<form method="POST" th:object="${userForm}">
-				<div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('*')}">
+			<form method="POST" th:action="@{/login}">
+				<div class="alert alert-danger" role="alert" th:if="${error}">
 					Please correct the errors below
 				</div>
 			
 				<div class="form-group">
-					<label for="username">Email</label>
-					<input type="email" class="form-control" th:classappend="${#fields.hasErrors('username')} ? is-invalid" th:field="*{username}">
-					<div class="invalid-feedback" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">
-						Email Error
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="firstName">First Name</label>
-					<input type="text" class="form-control" th:classappend="${#fields.hasErrors('firstName')} ? is-invalid" th:field="*{firstName}">
-					<div class="invalid-feedback" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">
-						First Name Error
-					</div>
+					<label for="text">Email</label>
+					<input type="text" class="form-control" name="username">
 				</div>
 				<div class="form-group">
 					<label for="password">Password</label>
-					<input type="password" class="form-control" th:classappend="${#fields.hasErrors('password')} ? is-invalid" th:field="*{password}">
-					<div class="invalid-feedback" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">
-						Password Error
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="confirmPassword">Confirm Password</label>
-					<input type="password" class="form-control" th:classappend="${#fields.hasErrors('confirmPassword')} ? is-invalid" th:field="*{confirmPassword}">
-					<div class="invalid-feedback" th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}">
-						Password Error
-					</div>
+					<input type="password" class="form-control" name="password">
 				</div>
 				<div class="row justify-content-end px-3">
 					<button type="submit" class="btn btn-primary">Register</button>
-				<div class="form-group">
+				</div>
+				
 			</form>
 			</div>
 		</div>
-	
 	</div>
-	
 </body>
+</html>	

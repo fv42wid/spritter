@@ -16,7 +16,7 @@ public class UserForm {
 	
 	@Size(min=1, message = "Email is not valid")
 	@Email(message = "Email is not valid")
-	private String email;
+	private String username;
 	
 	@Size(min=4, message = "Password must be at least 4 characters")
 	private String password;
@@ -29,7 +29,7 @@ public class UserForm {
 	private String firstName;
 	
 	public User toUser(PasswordEncoder passwordEncoder) {
-		return new User(email, passwordEncoder.encode(password), firstName);
+		return new User(username, passwordEncoder.encode(password), firstName);
 	}
 	
 
