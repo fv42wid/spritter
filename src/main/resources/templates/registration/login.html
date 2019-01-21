@@ -34,7 +34,7 @@
 					<span class="navbar-text">Hi</span>
 					<span class="navbar-text" sec:authentication="principal.firstName"></span>
 					</li>
-					<form method="post" th:action="@{/logout}" class="form-inline ml-3">
+					<form method="post" th:action="@{/logout}" class="form-inline ml-lg-3">
 						<button type="submit" class="btn btn-outline-light">Logout</button>
 					</form>
 				</ul>
@@ -48,8 +48,8 @@
 			<h1>Login</h1>
 			
 			<form method="POST" th:action="@{/login}">
-				<div class="alert alert-danger" role="alert" th:if="${error}">
-					Please correct the errors below
+				<div class="alert alert-danger" role="alert" th:if="${param.error}">
+					Email or password was not correct
 				</div>
 			
 				<div class="form-group">
