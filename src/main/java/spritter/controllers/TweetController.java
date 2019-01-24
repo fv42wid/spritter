@@ -25,7 +25,7 @@ import spritter.data.UserRepository;
 
 @Slf4j
 @Controller
-@RequestMapping(value={"/", "/tweets"})
+@RequestMapping("/tweets")
 public class TweetController {
 	
 	private PostRepository postRepo;

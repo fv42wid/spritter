@@ -2,6 +2,7 @@ package spritter.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -25,7 +26,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http
 			.authorizeRequests()
-				.antMatchers("/design", "/orders")
+				.antMatchers("/user/**")
+					.hasRole("USER")
+				.antMatchers(HttpMethod.POST, "/tweets")
 					.hasRole("USER")
 				.antMatchers("/", "/**").access("permitAll")
 				.antMatchers("/h2-console/**").access("permitAll")
