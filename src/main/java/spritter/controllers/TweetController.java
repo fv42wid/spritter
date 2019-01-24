@@ -45,8 +45,10 @@ public class TweetController {
 			excludeUsers.add(user.getId());
 			//add user.getFollows
 			//user.getFollows should be passed to findPostsByUserIn
+			List<User> postUsers = userRepo.findByIdFetchFollows(user.getId()).getFollows();
+			postUsers.add(user);
 			List<User> newUsers = userRepo.findTop5ByIdNotInOrderByIdDesc(excludeUsers);
-			List<Post> posts = postRepo.findPostsByUserIn(newUsers);
+			List<Post> posts = postRepo.findPostsByUserInOrderByIdDesc(postUsers);
 		
 			model.addAttribute("newUsers", newUsers);
 			model.addAttribute("posts", posts);

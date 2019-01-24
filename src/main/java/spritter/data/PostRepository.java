@@ -10,4 +10,5 @@ import spritter.data.Post;
 public interface PostRepository extends CrudRepository<Post, Long> {
 
 	List<Post> findPostsByUserIn(Collection<User> users);
+	List<Post> findPostsByUserInOrderByIdDesc(Collection<User> users);
 }
