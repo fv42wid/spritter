@@ -21,6 +21,7 @@ import lombok.extern.slf4j.Slf4j;
 import spritter.data.User;
 import spritter.data.Post;
 import spritter.data.PostRepository;
+import spritter.data.UserRepository;
 
 @Slf4j
 @Controller
@@ -28,22 +29,28 @@ import spritter.data.PostRepository;
 public class TweetController {
 	
 	private PostRepository postRepo;
+	private UserRepository userRepo;
 	
-	public TweetController(PostRepository postRepo) {
+	public TweetController(PostRepository postRepo, UserRepository userRepo) {
 		this.postRepo = postRepo;
+		this.userRepo = userRepo;
 	}
 	
 	@GetMapping
 	public String showTweets(SessionStatus sessionStatus, @AuthenticationPrincipal User user, Model model) {
 		model.addAttribute("post", new Post());
-		List<User> users = new ArrayList<User>() {{ 
-			add(user);
-		}};
+
+		if(user != null) {
+			List<Long> excludeUsers = new ArrayList<Long>();
+			excludeUsers.add(user.getId());
+			//add user.getFollows
+			//user.getFollows should be passed to findPostsByUserIn
+			List<User> newUsers = userRepo.findTop5ByIdNotInOrderByIdDesc(excludeUsers);
+			List<Post> posts = postRepo.findPostsByUserIn(newUsers);
 		
-		List<Post> posts = postRepo.findPostsByUserIn(users);
-		
-		model.addAttribute("newUsers", users);
-		model.addAttribute("posts", posts);
+			model.addAttribute("newUsers", newUsers);
+			model.addAttribute("posts", posts);
+		}
 		return "tweets/index";
 	}
 	

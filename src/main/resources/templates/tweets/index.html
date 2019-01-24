@@ -84,7 +84,13 @@
 				</form>
 				<h4>Follow Us:</h4>
 				<ul class="list-group">
-					<li class="list-group-item" th:each="user : ${newUsers}" th:text="${user.firstName}">User</li>
+					<li class="list-group-item" th:each="user : ${newUsers}">
+						<span class="mr-auto" th:text="${user.firstName}">User</span>
+						<form class="float-right" method="post" th:action="@{/user/follow}">
+							<input type="hidden" name="followsId" th:value="${user.id}">
+							<button type="submit" class="btn btn-primary">Follow</button>
+						</form>
+					</li>
 				</ul>
 			</div>
 		</div>
