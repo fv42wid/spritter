@@ -47,6 +47,9 @@ public class TweetController {
 			//user.getFollows should be passed to findPostsByUserIn
 			List<User> postUsers = userRepo.findByIdFetchFollows(user.getId()).getFollows();
 			postUsers.add(user);
+			
+			postUsers.forEach(u -> excludeUsers.add(u.getId()));
+			
 			List<User> newUsers = userRepo.findTop5ByIdNotInOrderByIdDesc(excludeUsers);
 			List<Post> posts = postRepo.findPostsByUserInOrderByIdDesc(postUsers);
 		
