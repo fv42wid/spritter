@@ -25,7 +25,7 @@ databaseChangeLog:
                   name: created_at
                   type: timestamp
         - createTable:
-            tableName: user
+            tableName: user_account
             columns:
               - column:
                   name: id
@@ -60,19 +60,19 @@ databaseChangeLog:
             baseTableName: post
             baseColumnNames: user_id
             constraintName: fk_post_user
-            referencedTableName: user
+            referencedTableName: user_account
             referencedColumnNames: id
         - addForeignKeyConstraint:
             baseTableName: user_follows
             baseColumnNames: follows_id
             constraintName: fk_follows_follow
-            referencedTableName: user
+            referencedTableName: user_account
             referencedColumnNames: id
         - addForeignKeyConstraint:
             baseTableName: user_follows
             baseColumnNames: user_id
             constraintName: fk_follows_user
-            referencedTableName: user
+            referencedTableName: user_account
             referencedColumnNames: id
                   
                   

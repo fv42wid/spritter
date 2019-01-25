@@ -22,3 +22,21 @@ create table user_follows (user_id int8 not null, follows_id int8 not null)
 alter table if exists post add constraint FK72mt33dhhs48hf9gcqrq4fxte foreign key (user_id) references user
 alter table if exists user_follows add constraint FKrjfyma7xg6esc5rxc817irgc1 foreign key (follows_id) references user
 alter table if exists user_follows add constraint FKhf6xgde6nveawnd1nctyetig8 foreign key (user_id) references user
+create table post (id  bigserial not null, created_at timestamp, message varchar(255) not null, user_id int8, primary key (id))
+create table user (id  bigserial not null, first_name varchar(255), password varchar(255), username varchar(255), primary key (id))
+create table user_follows (user_id int8 not null, follows_id int8 not null)
+alter table if exists post add constraint FK72mt33dhhs48hf9gcqrq4fxte foreign key (user_id) references user
+alter table if exists user_follows add constraint FKrjfyma7xg6esc5rxc817irgc1 foreign key (follows_id) references user
+alter table if exists user_follows add constraint FKhf6xgde6nveawnd1nctyetig8 foreign key (user_id) references user
+create table post (id  bigserial not null, created_at timestamp, message varchar(255) not null, user_id int8, primary key (id))
+create table user_account (id  bigserial not null, first_name varchar(255), password varchar(255), username varchar(255), primary key (id))
+create table user_account_follows (user_id int8 not null, follows_id int8 not null)
+alter table if exists post add constraint FK7ossp45hgowuwqeytd1c92v1s foreign key (user_id) references user_account
+alter table if exists user_account_follows add constraint FKc1k638m1cjkqrav6d96i8qlef foreign key (follows_id) references user_account
+alter table if exists user_account_follows add constraint FKhjgs09io79b4c6835yan7yuum foreign key (user_id) references user_account
+create table post (id  bigserial not null, created_at timestamp, message varchar(255) not null, user_id int8, primary key (id))
+create table user_account (id  bigserial not null, first_name varchar(255), password varchar(255), username varchar(255), primary key (id))
+create table user_account_follows (user_id int8 not null, follows_id int8 not null)
+alter table if exists post add constraint FK7ossp45hgowuwqeytd1c92v1s foreign key (user_id) references user_account
+alter table if exists user_account_follows add constraint FKc1k638m1cjkqrav6d96i8qlef foreign key (follows_id) references user_account
+alter table if exists user_account_follows add constraint FKhjgs09io79b4c6835yan7yuum foreign key (user_id) references user_account

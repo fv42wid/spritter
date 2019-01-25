@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 
 import org.hibernate.Hibernate;
 import org.springframework.security.core.GrantedAuthority;
@@ -28,6 +29,7 @@ import lombok.RequiredArgsConstructor;
 @Data
 @NoArgsConstructor(access=AccessLevel.PRIVATE, force=true)
 @RequiredArgsConstructor
+@Table(name="user_account")
 public class User implements UserDetails {
 
 	private static final long serialVersionUID = 1L;
@@ -40,13 +42,11 @@ public class User implements UserDetails {
 	private final String password;
 	private final String firstName;
 	
-	//@ManyToMany(targetEntity = User.class, fetch = FetchType.EAGER)
+	
 	@ManyToMany(targetEntity = User.class)
-	//@JoinTable(name="USER_FOLLOWS", joinColumns= {@JoinColumn(name="USER_ID")}, inverseJoinColumns= {@JoinColumn(name="FOLLOWS_ID")} )
 	private List<User> follows;
 	
 	public void addFollow(User follow) {
-		//Hibernate.initialize(this.getFollows());
 		this.follows.add(follow);
 	}
 	
