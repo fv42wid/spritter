@@ -44,7 +44,7 @@ databaseChangeLog:
                   name: first_name
                   type: varchar(255)
         - createTable:
-            tableName: user_follows
+            tableName: user_account_follows
             columns:
               - column:
                   name: user_id
@@ -63,13 +63,13 @@ databaseChangeLog:
             referencedTableName: user_account
             referencedColumnNames: id
         - addForeignKeyConstraint:
-            baseTableName: user_follows
+            baseTableName: user_account_follows
             baseColumnNames: follows_id
             constraintName: fk_follows_follow
             referencedTableName: user_account
             referencedColumnNames: id
         - addForeignKeyConstraint:
-            baseTableName: user_follows
+            baseTableName: user_account_follows
             baseColumnNames: user_id
             constraintName: fk_follows_user
             referencedTableName: user_account
