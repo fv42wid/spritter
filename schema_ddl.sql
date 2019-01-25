@@ -10,3 +10,9 @@ create table user_follows (user_id bigint not null, follows_id bigint not null)
 alter table post add constraint FK72mt33dhhs48hf9gcqrq4fxte foreign key (user_id) references user
 alter table user_follows add constraint FKrjfyma7xg6esc5rxc817irgc1 foreign key (follows_id) references user
 alter table user_follows add constraint FKhf6xgde6nveawnd1nctyetig8 foreign key (user_id) references user
+create table post (id  bigserial not null, created_at timestamp, message varchar(255) not null, user_id int8, primary key (id))
+create table user (id  bigserial not null, first_name varchar(255), password varchar(255), username varchar(255), primary key (id))
+create table user_follows (user_id int8 not null, follows_id int8 not null)
+alter table if exists post add constraint FK72mt33dhhs48hf9gcqrq4fxte foreign key (user_id) references user
+alter table if exists user_follows add constraint FKrjfyma7xg6esc5rxc817irgc1 foreign key (follows_id) references user
+alter table if exists user_follows add constraint FKhf6xgde6nveawnd1nctyetig8 foreign key (user_id) references user
