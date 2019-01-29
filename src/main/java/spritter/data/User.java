@@ -44,7 +44,7 @@ public class User implements UserDetails {
 	
 	
 	@ManyToMany(targetEntity = User.class)
-	private List<User> follows;
+	private List<User> follows = new ArrayList<User>();
 	
 	public void addFollow(User follow) {
 		this.follows.add(follow);
